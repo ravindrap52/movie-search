@@ -1,0 +1,11 @@
+.movie-search {
+  margin: 20px auto;
+  width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
