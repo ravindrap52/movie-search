@@ -9,9 +9,9 @@ import { Movie } from "@/utils/tsUtils.ts";
  */
 export const fetchMovies = async (
   searchTerm: string
-): Promise<Movie[] | void> => {
+): Promise<Movie | null> => {
   try {
-    // encoding the search term correctly
+    // Encoding the search term correctly
     const encodedSearchTerm = encodeURIComponent(searchTerm);
     const url = `${API_URL}/?apikey=${API_KEY}&t=${encodedSearchTerm}`;
 
@@ -21,9 +21,11 @@ export const fetchMovies = async (
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
-    return data || [];
+
+    return data as Movie;
   } catch (error) {
     console.error("An unexpected error occurred:", error);
+    return null;
   }
 };
 
