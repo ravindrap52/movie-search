@@ -40,7 +40,7 @@ export default function MovieSearch() {
           {isLoading && <div className="text-center"><Loading /></div>}
           {error && <h3 className="text-center">An error occurred while fetching the results</h3>}
           {data && data.Response === "False" && (
-            <h3 className="text-center">No movies found for "{searchTerm}".</h3>
+            <h3 className="text-center text-color">No movies found for "{searchTerm}".</h3>
           )}
           {data && data.Response === "True" && (
             <MovieList movie={data} searchTerm={debouncedSearchTerm} />
