@@ -2,6 +2,7 @@ import { useState, useCallback, ChangeEvent } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useMovieSearch } from "@/hooks/useMovieSearch";
 import MovieList from "@/components/MovieList.tsx";
+import Loading from "@/components/Loading";
 
 export default function MovieSearch() {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -36,10 +37,10 @@ export default function MovieSearch() {
 
       <main>
         <div className="search-results">
-          {isLoading && <div>Loading...</div>}
-          {error && <div>An error occurred while fetching the results</div>}
+          {isLoading && <div className="text-center"><Loading /></div>}
+          {error && <h3 className="text-center">An error occurred while fetching the results</h3>}
           {data && data.Response === "False" && (
-            <div>No movies found for "{searchTerm}".</div>
+            <h3 className="text-center">No movies found for "{searchTerm}".</h3>
           )}
           {data && data.Response === "True" && (
             <MovieList movie={data} searchTerm={debouncedSearchTerm} />

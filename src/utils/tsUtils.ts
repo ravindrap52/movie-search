@@ -9,3 +9,8 @@ export interface MovieListProps {
   movie: Movie;
   searchTerm: string;
 }
+
+export interface HighlightProptypes {
+  text: string;
+  highlight: string;
+}
